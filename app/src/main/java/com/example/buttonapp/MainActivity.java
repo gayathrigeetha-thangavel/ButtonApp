@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
     EditText editText;
@@ -26,13 +25,19 @@ public class MainActivity extends AppCompatActivity {
         btnPage1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (editText.length() == 0){
+                    editText.setError("Enter Text");
+                }
+                else{
                 String text = editText.getText().toString();
                 Intent intentPage1 = new Intent(getApplicationContext(),MainActivity2.class);
                 intentPage1.putExtra("Text",text);
 
                 startActivity(intentPage1);
+                }
             }
         });
+
 
         btnPage2.setOnClickListener(new View.OnClickListener() {
             @Override
